@@ -150,7 +150,7 @@ button {  width: auto; overflow: visible; }
 
 body, select, input, textarea {
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
-  color: #444;
+  color: #000;
   /* Set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */
 }
@@ -158,19 +158,88 @@ body, select, input, textarea {
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #a90101; }
+a:hover, a:focus { background-color: #e5d5d5; text-decoration: none;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all  0.5s ease; }
 
 
 /**
  * Primary styles
  *
- * Author: 
+ * Author: Kym Dusting
  */
 
+body { background: #fff url(../img/bg.png) repeat; text-align: center; }
+#container { margin-top: 35px; padding-top:104px; background: transparent url(../img/bg-header.png) repeat-x; }
+#w1 { background: transparent url(../img/bg-body.png) repeat; padding-top:40px; }
+#w2 { max-width: 800px; margin: 0 auto; }
+h1 { height: 280px; width: 427px; background: transparent url(../img/bg-logo.png) no-repeat; text-indent:-99999px; margin: 0 auto; padding: 30px 0 10px 0; }
+#main p:first-child, ul li, .ie6 #intro { text-transform:uppercase;
+  font-family: 'PT Serif', serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 30px;
+  color: #a90101;
+}
+#main p span { color: #000; }
+hr { border: none; background: transparent url(../img/bg-hr.png) no-repeat 50% 0; padding-top:40px; margin-top:18px; }
+hr + p, footer p { 
+  font-family: 'Open Sans', serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 20px; }
+footer p { padding-bottom: 80px; }
+ul li { list-style: none; display: inline-block; width: 24.5%; margin: 40px 0; height: 30px; text-align: left; }
+ul li a { padding-left: 33px; text-decoration: none; }
+.twitter { background: transparent url(../img/bg-twitter-links.png) no-repeat 0 2px; }
+li.twitter a:hover, li.twitter a:focus { background: transparent url(../img/bg-twitter-links.png) no-repeat 0 -114px; text-decoration:underline; }
+.facebook { background: transparent url(../img/bg-facebook-links.png) no-repeat 0 2px; }
+li.facebook a:hover, li.facebook a:focus { background: transparent url(../img/bg-facebook-links.png) no-repeat 0 -114px; text-decoration:underline; }
+.linkedin { background: transparent url(../img/bg-linkedin-links.png) no-repeat 0 2px; }
+li.linkedin a:hover, li.linkedin a:focus { background: transparent url(../img/bg-linkedin-links.png) no-repeat 0 -114px; text-decoration:underline; }
+.flickr { background: transparent url(../img/bg-flickr-links.png) no-repeat 0 2px; }
+li.flickr a:hover, li.flickr a:focus { background: transparent url(../img/bg-flickr-links.png) no-repeat 0 -114px; text-decoration:underline; }
+#w3 { padding-bottom: 250px; background: transparent url(../img/bg-footer.png) repeat-x; }
+header, #main, footer { -webkit-animation: fade-in 1s ease; }
+ul li a:hover, ul li a:focus {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all  1s ease; }
 
+/* animations */
+@-webkit-keyframes fade-in {
+	0% {
+			opacity: 0;
+	}
+	100% {
+			opacity: 1;
+	}
+}
 
-
+/* browser fixes */
+.ie7 ul li, .ie6 ul li {zoom: 1; *display: inline; }
+.ie7 #w3, .ie6 #w3 {height:250px; padding-bottom:0;}
+.ie6 #w2 {width:800px;}
+.ie6 p {font-family:Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;}
 
 
 
@@ -231,11 +300,27 @@ a:hover { color: #036; }
 
 /* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
    consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
+h1 { height: 184px; width: 280px; background: transparent url(../img/bg-logo-small.png) no-repeat;}
+ul li {display: inline; width: 240px; float:left; clear:right; margin:10px 0 10px 50px;}
+hr + p, footer p {font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;}
 
 
   /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
   /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+body {max-width:100%; width:100%;}
+h1 { height: 184px; width: 280px; background: transparent url(../img/bg-logo-small.png) no-repeat;}
+ul li {display: inline; width: 370px; float:left; clear:right; margin:10px 0 10px 110px;}
+hr + p, footer p {font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;}
 }
 
 
